@@ -13,6 +13,7 @@ func Sydney(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	q := r.URL.Query()
-	fmt.Println(q)
+	qJson, _ := json.Marshal(q)
+	fmt.Println(string(qJson))
 	common.NewSingleHostReverseProxy(common.BING_SYDNEY_URL).ServeHTTP(w, r)
 }
