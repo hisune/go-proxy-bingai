@@ -4,7 +4,6 @@ import (
 	"adams549659584/go-proxy-bingai/common"
 	"encoding/json"
 	"net/http"
-	"fmt"
 )
 
 type Response struct {
@@ -19,7 +18,6 @@ func CommonResult(w http.ResponseWriter, code int, msg string, data interface{})
 		Message: msg,
 		Data:    data,
 	}
-	fmt.Println(data)
 	w.Header().Set("Content-Type", "application/json")
 	err := json.NewEncoder(w).Encode(res)
 	if err != nil {
