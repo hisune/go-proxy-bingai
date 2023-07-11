@@ -268,6 +268,7 @@ func getRandCookie(req *http.Request) (int, string) {
 }
 
 func replaceResBody(originalBody string, originalScheme string, originalHost string) string {
+	fmt.Println(originalBody)
 	modifiedBodyStr := originalBody
 
 	if originalScheme == "https" {
