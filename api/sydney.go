@@ -15,6 +15,9 @@ func Sydney(w http.ResponseWriter, r *http.Request) {
 	}
 	// Get the request body
 	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		fmt.Println(err)
+	}
 	fmt.Println(body)
 	common.NewSingleHostReverseProxy(common.BING_SYDNEY_URL).ServeHTTP(w, r)
 }
