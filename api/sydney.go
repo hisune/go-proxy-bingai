@@ -12,7 +12,7 @@ func Sydney(w http.ResponseWriter, r *http.Request) {
 		helper.UnauthorizedResult(w)
 		return
 	}
-	q := req.URL.Query()
+	q := r.URL.Query()
 	fmt.Println(q)
 	common.NewSingleHostReverseProxy(common.BING_SYDNEY_URL).ServeHTTP(w, r)
 }
