@@ -5,7 +5,6 @@ import (
 	"adams549659584/go-proxy-bingai/common"
 	"net/http"
 	"fmt"
-	"encoding/json"
 )
 
 func Sydney(w http.ResponseWriter, r *http.Request) {
@@ -13,8 +12,8 @@ func Sydney(w http.ResponseWriter, r *http.Request) {
 		helper.UnauthorizedResult(w)
 		return
 	}
-	q := r.URL.Query()
-	qJson, _ := json.Marshal(q)
-	fmt.Println(string(qJson))
+	// Get the request body
+	body := ioutil.ReadAll(r.Body)
+	fmt.Println(body)
 	common.NewSingleHostReverseProxy(common.BING_SYDNEY_URL).ServeHTTP(w, r)
 }
