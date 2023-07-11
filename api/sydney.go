@@ -4,8 +4,6 @@ import (
 	"adams549659584/go-proxy-bingai/api/helper"
 	"adams549659584/go-proxy-bingai/common"
 	"net/http"
-	"fmt"
-	"io/ioutil"
 )
 
 func Sydney(w http.ResponseWriter, r *http.Request) {
@@ -13,11 +11,5 @@ func Sydney(w http.ResponseWriter, r *http.Request) {
 		helper.UnauthorizedResult(w)
 		return
 	}
-	// Get the request body
-	body, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Println(body)
 	common.NewSingleHostReverseProxy(common.BING_SYDNEY_URL).ServeHTTP(w, r)
 }
